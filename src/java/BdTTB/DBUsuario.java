@@ -17,10 +17,12 @@
 package BdTTB;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Vector;
 
 /**
@@ -92,5 +94,30 @@ public class DBUsuario {
                 fila = (String[]) vector.get(1);	// en 0 están los títulos
 
         return fila;
+    }
+    
+    public ArrayList<Usuario> get(){
+        PreparedStatement stmt= null;
+        ResultSet rs = null;
+        ArrayList<Usuario> array = new ArrayList<Usuario>();
+        String nick,nombre,correo,pass;
+        try {
+            stmt=con.prepareStatement("SELECT nick,nombre,correo FROM usuario;");
+            rs=stmt.executeQuery();
+            while(rs.next()) {// Se ejecuta tantas veces como filas tenga la consulta
+                nick = rs.getString("nick");
+                nombre = rs.getString("nombre");
+                correo = rs.getString("correo");
+                Usuario aux = new Usuario(nick,nombre,correo);
+                array.add(aux);
+            }
+            // Cierra la sentencia
+            stmt.close();
+            // Cierra la conexión
+            con.close();
+        }catch (SQLException e) {
+            System.out.println("SQLException"+e);
+        }
+        return array;
     }
 }

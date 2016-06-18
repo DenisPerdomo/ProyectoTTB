@@ -28,11 +28,21 @@ function messageAdd(){
     document.getElementById("idCantidad").value = "";
     document.getElementById("idNombre").value = "";
     document.getElementById("idUsuAsociado").value = "";
-    $('#myModal').modal()
+    $('#myModal').modal();
     $("#modalTitle").html("ADD A ARTICLE");
     $("#modalFooter").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>NO</button>"+
     "<button type='button' class='btn btn-success' onclick='addArticle()'>SEND</button>");
 };
+
+function messageAddmyList(){
+    document.getElementById("idCantidad").value = "";
+    document.getElementById("idNombre").value = "";
+    $('#myModal').modal();
+    $("#modalTitle").html("ADD A ARTICLE");
+    $("#modalFooter").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>NO</button>"+
+    "<button type='button' class='btn btn-success' onclick='addArticleMyList()'>SEND</button>");
+};
+
 /**
  * 
  * @param {type} idArticle
@@ -49,6 +59,17 @@ function messageUpdate(idArticle){
     $("#modalTitle").html("UPDATE ARTICLE");
     $("#modalFooter").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>"+
     "<button type='button' class='btn btn-success' onclick='updateArticle("+idArticle+")'>Update</button>");
+};
+
+function msgUpdateMyList(idArticle){
+    var cantidad2 = $("#tablecantidad".concat(idArticle)).text();
+    var nombre2 = $("#tablenombre".concat(idArticle)).text();
+    document.getElementById("idCantidad").value = cantidad2;
+    document.getElementById("idNombre").value = nombre2;
+    $('#myModal').modal();
+    $("#modalTitle").html("UPDATE ARTICLE");
+    $("#modalFooter").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>"+
+    "<button type='button' class='btn btn-success' onclick='updateMyList("+idArticle+")'>Update</button>");
 };
 
 function messageDel(idArticle){
@@ -87,6 +108,35 @@ function messageDelList(idList){
 };
 
 function selectArticulo(idArticulo){
+    var parametros = {
+      "idArticulo" : idArticulo 
+    };
+    $.ajax({
+      data:   parametros,
+      url:   'selectidarticle.jsp',
+      type:  'post',
+      beforeSend: function () {
+       // $("#modalContent").html("Insert data&hellip;");
+       // $("#modalFooter").html("");
+       //  $('#myModal').modal({backdrop: 'static'});
+      },
+      success:  function (msg) {
+        var var2=msg.split("\n").join("");;
+        if(var2 == 'ok'){
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#contenido').fadeOut();
+            $('#contenido').load("contList.jsp");
+            sleep(300);
+            $('#contenido').fadeIn();
+        }else if(var2 == 'error'){
+            $("#modalContent").html("");
+            $("#modalContent").html("Insertado Mal");
+        }
+      }
+  });    
+}
+
+function selectMylist(idArticulo){
     var parametros = {
       "idArticulo" : idArticulo 
     };
@@ -154,7 +204,50 @@ function addArticle(){
             $('#myModal').modal('hide');
             $('body,html').animate({scrollTop : 0}, 500);
             $('#contenido').fadeOut();
-            $('#contenido').load("contList.jsp");
+            $('#contenido').load("contmyList.jsp");
+            $('#contenido').fadeIn();
+        }else if(var2 == 'error'){
+            $("#modalContent").html("");
+            $("#modalContent").html("Insertado Mal");
+        }
+          //$('#myModal').modal('hide');
+          //$('body,html').animate({scrollTop : 0}, 500);
+      }
+  });
+}
+
+function addArticleMyList(){
+    var cantidad = document.getElementById("idCantidad").value;
+    var nombre = document.getElementById("idNombre").value;
+    var usu_prop = jQuery('#username').val();
+    var id_lista = jQuery('#id_lista').val();
+    var parametros = {
+      "cantidad" : cantidad,
+      "nombre" : nombre,
+      "asociado" : usu_prop,
+      "id_lista" : id_lista,
+      "usu_prop" : usu_prop  
+    };
+    $.ajax({
+      data:   parametros,
+      url:   'insertArticle.jsp',
+      type:  'post',
+      beforeSend: function () {
+        $("#modalContent").html("Insert data&hellip;");
+        $("#modalFooter").html("");
+        $('#myModal').modal({backdrop: 'static'});
+      },
+      success:  function (msg) {
+        var var2=msg.split("\n").join("");;
+        if(var2 == 'ok'){
+            $("#modalContent").html("");
+            $("#modalContent").html("Insertado Correctamente");
+            document.getElementById("idCantidad").value = "";
+            document.getElementById("idNombre").value = "";
+            $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#contenido').fadeOut();
+            $('#contenido').load("contmyList.jsp");
             $('#contenido').fadeIn();
         }else if(var2 == 'error'){
             $("#modalContent").html("");
@@ -170,7 +263,11 @@ function addArticle(){
  * @returns {undefined}
  */
 function updateArticle(idArticle){
-    var nameLista = document.getElementById()
+    var cantidad = document.getElementById("idCantidad").value;
+    var nombre = document.getElementById("idNombre").value;
+    var asociado = document.getElementById("idUsuAsociado").value;
+    var usu_prop = jQuery('#username').val();
+    var id_lista = jQuery('#id_lista').val();
     var parametros = {
       "idArticle" : idArticle,
       "cantidad" : cantidad,
@@ -199,6 +296,51 @@ function updateArticle(idArticle){
             $('#myModal').modal('hide');
             $('#contenido').fadeOut();
             $('#contenido').load("contList.jsp");
+            $('#contenido').fadeIn();
+        }else if(var2 === 'error'){
+            $("#modalContent").html("");
+            $("#modalContent").html("Update Wrong");
+            $("#modalContent").html("");
+        }
+          //$('#myModal').modal('hide');
+          //$('body,html').animate({scrollTop : 0}, 500);
+      }
+  });
+}
+
+function updateMyList(idArticle){
+    var cantidad = document.getElementById("idCantidad").value;
+    var nombre = document.getElementById("idNombre").value;
+    var asociado = jQuery('#username').val();
+    var usu_prop = $("#tableusu".concat(idArticle)).text();
+    var id_lista = jQuery('#id_lista').val();
+    var parametros = {
+      "idArticle" : idArticle,
+      "cantidad" : cantidad,
+      "nombre" : nombre,
+      "asociado" : asociado,
+      "id_lista" : id_lista,
+      "usu_prop" : usu_prop  
+    };
+    $.ajax({
+      data:   parametros,
+      url:   'updateArticle.jsp',
+      type:  'post',
+      beforeSend: function () {
+        $("#modalContent").html("Update data&hellip;");
+        $("#modalFooter").html("");
+        $('#myModal').modal({backdrop: 'static'});
+      },
+      success:  function (msg) {
+        var var2=msg.split("\n").join("");;
+        if(var2 === 'ok'){
+            $("#modalContent").html("");
+            $("#modalContent").html("Update Succesfull");
+            document.getElementById("idCantidad").value = "";
+            document.getElementById("idNombre").value = "";
+            $('#myModal').modal('hide');
+            $('#contenido').fadeOut();
+            $('#contenido').load("contmyList.jsp");
             $('#contenido').fadeIn();
         }else if(var2 === 'error'){
             $("#modalContent").html("");

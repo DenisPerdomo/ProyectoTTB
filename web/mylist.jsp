@@ -59,13 +59,12 @@
                     <li><li><a href="lists.jsp">List</a></li></li>
                     <li><a href="mainlist.jsp">Main List</a></li>
                     <li class="active"><a href="mylist.jsp">My List</a></li>
-                    <li><a href="friendslist.jsp">Friends List</a></li>
                 </ul>
                 <p class="navbar-text pull-right">
-                    <a href="#" class="navbar-link">Log Out</a>
+                    <a href="#" class="navbar-link">Help</a>
                 </p>
                 <p class="navbar-text pull-right">
-                    <a href="#" class="navbar-link">Change List</a>
+                    <a href="#" class="navbar-link">Log Out</a>
                 </p>
             </div><!--/.nav-collapse -->
           </div>
@@ -93,12 +92,6 @@
                                   <input type="text" class="form-control" id ="idNombre" placeholder="" required>
                                   <span id ="nameHelp" class="help-block">The product to bring.</span>
                                   <span id="iconName" class=""></span>
-                                </div>
-                                <div class="form-group" id ="usuAsociadoGroup">
-                                  <label class="control-label" for="idUsuAsociado">Who bring?</label>
-                                  <input type="text" class="form-control" id ="idUsuAsociado" placeholder="" required>
-                                  <span id ="asociadoHelp" class="help-block">User's Name</span>
-                                  <span id="iconAsociado" class=""></span>
                                 </div>
                                 <input type="hidden" id="username" value="<%out.print(usuario);%>">
                                 <input type="hidden" id="id_lista" value="<%out.print(idLista);%>">

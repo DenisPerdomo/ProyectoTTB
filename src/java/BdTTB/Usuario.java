@@ -23,6 +23,12 @@ public class Usuario {
         this.passUsuario = passUsuario;
     }
 
+    public Usuario(String nickUsuario, String nombreUsuario, String correoUsuario) {
+        this.nickUsuario = nickUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.correoUsuario = correoUsuario;
+    }
+
     public String getNickUsuario() {
         return nickUsuario;
     }

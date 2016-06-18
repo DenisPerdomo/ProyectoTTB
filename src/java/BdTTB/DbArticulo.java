@@ -134,4 +134,34 @@ public class DbArticulo {
         }
         return array;
     }
+    
+    public ArrayList<Articulo> getmylist(int id_lista, String nick){
+        PreparedStatement stmt= null;
+        ResultSet rs = null;
+        ArrayList<Articulo> array = new ArrayList<Articulo>();
+        int idArticulo,cantidad;
+        String nombreArticulo,comprado,nick_usuario,usu_asociado;
+        try {
+            stmt=con.prepareStatement("SELECT * FROM articulo WHERE id_lista=" + id_lista + " AND usu_asociado='"+nick+"';");
+            rs=stmt.executeQuery();
+            while(rs.next()) {// Se ejecuta tantas veces como filas tenga la consulta
+                idArticulo = rs.getInt("id_articulo");
+                nombreArticulo = rs.getString("nombre_articulo");
+                cantidad = rs.getInt("cantidad");
+                comprado = rs.getString("comprado");
+                id_lista = rs.getInt("id_lista");
+                nick_usuario = rs.getString("nick_usuario");
+                usu_asociado = rs.getString("usu_asociado");
+                Articulo aux = new Articulo(idArticulo, nombreArticulo, cantidad, comprado,id_lista, nick_usuario, usu_asociado);
+                array.add(aux);
+            }
+            // Cierra la sentencia
+            stmt.close();
+            // Cierra la conexión
+            con.close();
+        }catch (SQLException e) {
+            System.out.println("SQLException"+e);
+        }
+        return array;
+    }
 }

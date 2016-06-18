@@ -4,6 +4,8 @@
     Author     : Denis
 --%>
 
+<%@page import="BdTTB.DBUsuario"%>
+<%@page import="BdTTB.Usuario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="BdTTB.Articulo"%>
 <%@page import="BdTTB.DbArticulo"%>
@@ -59,13 +61,12 @@
                     <li><li><a href="lists.jsp">List</a></li></li>
                     <li class="active"><a href="mainlist.jsp">Main List</a></li>
                     <li><a href="mylist.jsp">My List</a></li>
-                    <li><a href="friendslist.jsp">Friends List</a></li>
                 </ul>
                 <p class="navbar-text pull-right">
                     <a href="#" class="navbar-link">Log Out</a>
                 </p>
                 <p class="navbar-text pull-right">
-                    <a href="#" class="navbar-link">Change List</a>
+                    <a href="#" class="navbar-link">Ayuda</a>
                 </p>
             </div><!--/.nav-collapse -->
           </div>
@@ -96,7 +97,21 @@
                                 </div>
                                 <div class="form-group" id ="usuAsociadoGroup">
                                   <label class="control-label" for="idUsuAsociado">Who bring?</label>
-                                  <input type="text" class="form-control" id ="idUsuAsociado" placeholder="" required>
+                                  <!--<input type="text" class="form-control" id ="idUsuAsociado" placeholder="" required>-->
+                                    <select class="form-control" id="idUsuAsociado"> 
+                                    <option value='' selected='selected' disabled='disabled'>Nick</option>
+                                    <%DBUsuario listarUsuarios = new DBUsuario();
+                                    ArrayList<Usuario> array = new ArrayList<Usuario>();
+                                    array = listarUsuarios.get();
+                                    int i = 0;
+                                    Usuario fila;
+                                    while ((array != null) && (i<array.size())){
+                                        fila=array.get(i);
+                                        out.print("<option value='"+fila.getNickUsuario()+"''>"+fila.getNickUsuario() +"</option>");  
+                                        i++;
+                                    }
+                                    %>
+                                    </select>	
                                   <span id ="asociadoHelp" class="help-block">User's Name</span>
                                   <span id="iconAsociado" class=""></span>
                                 </div>
