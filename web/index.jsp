@@ -5,6 +5,17 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="windows-1252"%>
+<%
+   //Obtengo la variable de la sesion
+   Object usuario = (String) session.getAttribute("nick");//Recoge la session
+   //int idLista = Integer.parseInt(idListaS);
+   //Comparamos su usario es null, en caso afirmativo redirige a la pantalla de logeo.
+   if (usuario!=null){
+       response.sendRedirect("lists.jsp");
+   }
+   //si el usuario es correcto cargamos la página.
+   else{
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,14 +31,20 @@
     </head>
     <body>
         <div class="container">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-                <form class="form-signin">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <img src="imgs/ttblogo.png" class="responsive center-block" width="65%"/>
+                <br>
+                <form class="form-signin" action ="Login" method="POST">
                   <h2 class="form-signin-heading">Please sign in</h2>
-                  <label for="inputEmail" class="sr-only">Email address</label>
-                  <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                  <div class="form-group">
+                  <label for="inputNick" class="sr-only">User Nick</label>
+                  <input type="text" id="inputNick" name = "usuario" class="form-control" placeholder="User Nick" required autofocus>
+                  </div>
+                  <div class="form-group">
                   <label for="inputPassword" class="sr-only">Password</label>
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+                  </div>
                   <div class="checkbox">
                     <label>
                       <input type="checkbox" value="remember-me"> Remember me
@@ -36,7 +53,10 @@
                   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                 </form>
             </div>
-            <div class="col-md-3"></div>
+            <div class="col-md-4"></div>
         </div> <!-- /container -->
     </body>
 </html>
+<% 
+   }
+%>

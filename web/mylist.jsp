@@ -36,7 +36,7 @@
         <script type="text/javascript">
             $(document).ready(function(){
             $('#contenido').fadeOut();
-            $('#contenido').load("contList.jsp");
+            $('#contenido').load("contmyList.jsp");
             sleep(300);
             $('#contenido').fadeIn();
             });
@@ -57,8 +57,8 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><li><a href="lists.jsp">List</a></li></li>
-                    <li class="active"><a href="mainlist.jsp">Main List</a></li>
-                    <li><a href="mylist.jsp">My List</a></li>
+                    <li><a href="mainlist.jsp">Main List</a></li>
+                    <li class="active"><a href="mylist.jsp">My List</a></li>
                     <li><a href="friendslist.jsp">Friends List</a></li>
                 </ul>
                 <p class="navbar-text pull-right">

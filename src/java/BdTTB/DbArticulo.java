@@ -59,6 +59,35 @@ public class DbArticulo {
             return "error";
         }
     }
+    
+    public String updateState(int idArticulo){
+        PreparedStatement stmtSelect = null;
+        PreparedStatement stmtUpdate = null;
+        ResultSet rs = null;
+        String comprado ="";
+        try {
+            stmtSelect=con.prepareStatement("SELECT comprado FROM articulo WHERE id_articulo=" + idArticulo + ";");
+            rs=stmtSelect.executeQuery();
+            while(rs.next()) {
+            comprado = rs.getString("comprado");
+            }
+            if(comprado.compareTo("no")==0){
+                stmtUpdate = con.prepareStatement("UPDATE articulo SET comprado=? WHERE id_articulo ="+idArticulo);
+                stmtUpdate.setString(1, "si");
+                stmtUpdate.executeUpdate();
+                return "ok";
+            }
+            else{
+                stmtUpdate = con.prepareStatement("UPDATE articulo SET comprado=? WHERE id_articulo ="+idArticulo);
+                stmtUpdate.setString(1, "no");
+                stmtUpdate.executeUpdate();
+                return "ok";
+            }
+        }catch (SQLException e) {
+            System.out.println("SQLException" + e);
+            return "error";
+        }
+    }
     public String deleteArticle(int idArticulo){
         PreparedStatement stmt = null;
         try {

@@ -4,7 +4,6 @@
     Author     : Denis
 --%>
 <%@page import="BdTTB.DbArticulo"%>
-<%@page import="BdTTB.Articulo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     

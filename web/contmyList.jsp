@@ -25,6 +25,7 @@
                     <tbody>
                         <%
                             int idLista = (int) (session.getAttribute("id_lista"));
+                            Object usuario = (String) session.getAttribute("nick");
                             DbArticulo selectArticulos = new DbArticulo();
                             ArrayList<Articulo> array = new ArrayList<Articulo>();
                             array = selectArticulos.get(idLista);

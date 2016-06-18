@@ -24,6 +24,11 @@ public class Lista {
         this.fecha_lista = fecha_lista;
     }
 
+    public Lista(int id_lista, String nombre_lista) {
+        this.id_lista = id_lista;
+        this.nombre_lista = nombre_lista;
+    }
+    
     public int getId_lista() {
         return id_lista;
     }
