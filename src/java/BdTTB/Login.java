@@ -31,8 +31,7 @@ import javax.servlet.http.HttpSession;
 public class Login extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Metodo para obtener parametros pasados por GET o por POST
      *
      * @param request servlet request
      * @param response servlet response
@@ -44,7 +43,7 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-           //Recogemos variables que son enviadas desde administrator.jsp
+           //Recogemos variables.
             String usuario = request.getParameter("usuario");
             String password = request.getParameter("password");
 

@@ -36,7 +36,12 @@ public class DBLista {
         conexionDBTTB = new ConClass();
         con = conexionDBTTB.getConnection();
     }
-public String insertList(String nameList){
+    /**
+     * Metodo para insertar una lista en la base de datos.
+     * @param nameList El nombre de la lista que insertaremos.
+     * @return 
+     */
+    public String insertList(String nameList){
         PreparedStatement stmt = null;
         try {
             stmt = con.prepareStatement("INSERT INTO lista (nombre_lista, fecha_lista)VALUES (?,CURRENT_DATE)");
@@ -48,7 +53,12 @@ public String insertList(String nameList){
             return "error";
         }
     }
-    
+    /**
+     * Metodo para actualizar los datos de una lista en la BD.
+     * @param idLista El id de la lista que vamos a actualizar.
+     * @param nombre El nombre con el que vamos a cambiar la lista.
+     * @return 
+     */
     public String updateList(int idLista, String nombre){
         PreparedStatement stmt = null;
         try {
@@ -62,7 +72,11 @@ public String insertList(String nameList){
             return "error";
         }
     }
-    
+    /**
+     * Metodo para eliminar una lista de la BD.
+     * @param idList Id de la lista que vamos a eliminar.
+     * @return 
+     */
     public String deleteList(int idList){
         PreparedStatement stmt = null;
         try {
@@ -75,7 +89,10 @@ public String insertList(String nameList){
             return "error";
         }
     }
-    
+    /**
+     * Metodo que crea un arraylist con todas las listas de la BD.
+     * @return 
+     */
     public ArrayList<Lista> get(){
         PreparedStatement stmt= null;
         ResultSet rs = null;

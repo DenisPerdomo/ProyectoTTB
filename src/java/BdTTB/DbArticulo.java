@@ -24,7 +24,15 @@ public class DbArticulo {
         conexionDBTTB = new ConClass();
         con = conexionDBTTB.getConnection();
     }
-    
+    /**
+     * Metodo para insertar un articulo en la BD.
+     * @param nombre
+     * @param cantidad
+     * @param id_lista
+     * @param nick_usuario
+     * @param usu_asociado
+     * @return 
+     */
     public String insertArticle(String nombre, int cantidad, int id_lista, String nick_usuario, String usu_asociado){
         PreparedStatement stmt = null;
         try {
@@ -41,7 +49,16 @@ public class DbArticulo {
             return "error";
         }
     }
-    
+    /**
+     * Método para actualizar un articulo en la BD.
+     * @param idArticulo
+     * @param nombre
+     * @param cantidad
+     * @param id_lista
+     * @param nick_usuario
+     * @param usu_asociado
+     * @return 
+     */
     public String updateArticle(int idArticulo, String nombre, int cantidad, int id_lista, String nick_usuario, String usu_asociado){
         PreparedStatement stmt = null;
         try {
@@ -59,7 +76,11 @@ public class DbArticulo {
             return "error";
         }
     }
-    
+    /**
+     * Método para actualizar solo el estado del articulo.
+     * @param idArticulo
+     * @return 
+     */
     public String updateState(int idArticulo){
         PreparedStatement stmtSelect = null;
         PreparedStatement stmtUpdate = null;
@@ -88,6 +109,11 @@ public class DbArticulo {
             return "error";
         }
     }
+    /**
+     * Metodo para eliminar un articulo.
+     * @param idArticulo Id del articulo a eliminar.
+     * @return 
+     */
     public String deleteArticle(int idArticulo){
         PreparedStatement stmt = null;
         try {
@@ -134,7 +160,12 @@ public class DbArticulo {
         }
         return array;
     }
-    
+    /**
+     * Método para consultar los articulos de una lista y de un usuario, Mylist.
+     * @param id_lista Id de la lista seleccionada
+     * @param nick Nick del usuario que queremos consultar la lista.
+     * @return 
+     */
     public ArrayList<Articulo> getmylist(int id_lista, String nick){
         PreparedStatement stmt= null;
         ResultSet rs = null;

@@ -37,6 +37,11 @@ public class DBUsuario {
         conexionDBTTB = new ConClass();
         con = conexionDBTTB.getConnection();
     }
+    /**
+     * Método para pasar una consulta y ejecutarla en la BD.
+     * @param sql Cadena con la consulta que se quiera realizar.
+     * @return 
+     */
     static public Vector consulta(String sql) {
         Vector regs = new Vector();
 
@@ -84,7 +89,11 @@ public class DBUsuario {
 
         return regs;
     }
-    
+    /**
+     * Obtener una fila de una consulta.
+     * @param sql Cadena con la consulta que se quiera realizar.
+     * @return 
+     */
     static public String[] getFila(String sql) {
         Vector vector = consulta(sql);
         String[] fila = null;
@@ -95,7 +104,10 @@ public class DBUsuario {
 
         return fila;
     }
-    
+    /**
+     * Metodo que crea un arraylist con todos usuarios en la BD.
+     * @return 
+     */
     public ArrayList<Usuario> get(){
         PreparedStatement stmt= null;
         ResultSet rs = null;
