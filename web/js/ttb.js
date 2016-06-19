@@ -177,11 +177,6 @@ function selectArticulo(idArticulo){
       data:   parametros,
       url:   'selectidarticle.jsp',
       type:  'post',
-      beforeSend: function () {
-        $("#modalContent").html("Insert data&hellip;");
-        $("#modalFooter").html("");
-        $('#myModal').modal({backdrop: 'static'});
-      },
       success:  function (msg) {
         var var2=msg.split("\n").join("");;
         if(var2 == 'ok'){
@@ -365,11 +360,6 @@ function selectMylist(idArticulo){
       data:   parametros,
       url:   'selectidarticle.jsp',
       type:  'post',
-      beforeSend: function () {
-       // $("#modalContent").html("Insert data&hellip;");
-       // $("#modalFooter").html("");
-       //  $('#myModal').modal({backdrop: 'static'});
-      },
       success:  function (msg) {
         var var2=msg.split("\n").join("");;
         if(var2 == 'ok'){
