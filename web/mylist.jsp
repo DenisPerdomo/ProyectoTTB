@@ -56,7 +56,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><li><a href="lists.jsp">List</a></li></li>
+                    <li><li><a href="lists.jsp">Lists</a></li></li>
                     <li><a href="mainlist.jsp">Main List</a></li>
                     <li class="active"><a href="mylist.jsp">My List</a></li>
                 </ul>
