@@ -55,13 +55,17 @@ public class DBListaTest {
     @Test
     public void testInsertList() {
         System.out.println("insertList");
-        String nameList = "";
+        String nameList = "Lista de prueba";
         DBLista instance = new DBLista();
-        String expResult = "";
+        String expResult = "ok";
         String result = instance.insertList(nameList);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try{
+            assertEquals(expResult, result);
+            System.out.println("Test Insertar Correcto");
+        }catch(Exception e){
+            // TODO review the generated test code and remove the default call to fail.
+            fail("The test no se ha podido insertar.");
+        }
     }
 
     /**
@@ -70,14 +74,18 @@ public class DBListaTest {
     @Test
     public void testUpdateList() {
         System.out.println("updateList");
-        int idLista = 0;
-        String nombre = "";
+        int idLista = 2;
+        String nombre = "Cena Sabado";
         DBLista instance = new DBLista();
-        String expResult = "";
+        String expResult = "ok";
         String result = instance.updateList(idLista, nombre);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try{
+            assertEquals(expResult, result);
+            System.out.println("Test Actualizar Correcto");
+        }catch(Exception e){
+            // TODO review the generated test code and remove the default call to fail.
+            fail("El test no se ha podido actualizar.");
+        }
     }
 
     /**
@@ -86,27 +94,16 @@ public class DBListaTest {
     @Test
     public void testDeleteList() {
         System.out.println("deleteList");
-        int idList = 1;
+        int idList = 8;
         DBLista instance = new DBLista();
-        String expResult = "";
+        String expResult = "ok";
         String result = instance.deleteList(idList);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        try{
+            assertEquals(expResult, result);
+            System.out.println("Test Borrado Correcto");
+        }catch(Exception e){
+            // TODO review the generated test code and remove the default call to fail.
+            fail("El test no se ha podido borrar.");
+        }
     }
-
-    /**
-     * Test of get method, of class DBLista.
-     */
-    @Test
-    public void testGet() {
-        System.out.println("get");
-        DBLista instance = new DBLista();
-        ArrayList<Lista> expResult = null;
-        ArrayList<Lista> result = instance.get();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
