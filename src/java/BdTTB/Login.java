@@ -68,6 +68,7 @@ public class Login extends HttpServlet {
                 out.println("<div class=\"container\">");
                 out.println("<div class=\"col-md-4\"></div>");
                 out.println("<div class=\"col-md-4\">");
+                out.println("<div class='alert alert-danger alert-dismissable'><h3><span class='label label-danger'>¡¡ERROR!!</span></h3><h3>User or Password are Wrong!!</h3></div>");
                 out.println("<img src=\"imgs/ttblogo.png\" class=\"responsive center-block\" width=\"65%\"/>");
                 out.println("<br>");
                 out.println("<form class=\"form-signin\" action =\"Login\" method=\"POST\">");

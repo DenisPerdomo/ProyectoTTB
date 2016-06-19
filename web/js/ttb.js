@@ -27,7 +27,7 @@ function messageAdd(){
     document.getElementById("idNombre").value = "";
     document.getElementById("idUsuAsociado").value = "";
     $("#modalContent").html("");
-    $('#myModal').modal();
+    $('#myModal').modal({backdrop: 'static'});
     $("#modalTitle").html("ADD A ARTICLE");
     $("#modalFooter").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>NO</button>"+
     "<button type='button' class='btn btn-success' onclick='addArticle()'>SEND</button>");
@@ -41,7 +41,7 @@ function messageAddmyList(){
     document.getElementById("idCantidad").value = "";
     document.getElementById("idNombre").value = "";
     $("#modalContent").html("");
-    $('#myModal').modal();
+    $('#myModal').modal({backdrop: 'static'});
     $("#modalTitle").html("ADD A ARTICLE");
     $("#modalFooter").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>NO</button>"+
     "<button type='button' class='btn btn-success' onclick='addArticleMyList()'>SEND</button>");
@@ -54,7 +54,7 @@ function messageAddmyList(){
 function messageAddList(){
     document.getElementById("idNameList").value = "";
     $("#modalContent").html("");
-    $('#insertListModal').modal();
+    $('#insertListModal').modal({backdrop: 'static'});
     $("#modalTitle").html("ADD A LIST");
     $("#modalFooter").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>NO</button>"+
     "<button type='button' class='btn btn-success' onclick='addList()'>SEND</button>");
@@ -73,7 +73,7 @@ function messageUpdate(idArticle){
     document.getElementById("idNombre").value = nombre2;
     document.getElementById("idUsuAsociado").value = asociado2;
     $("#modalContent").html("");
-    $('#myModal').modal();
+    $('#myModal').modal({backdrop: 'static'});
     $("#modalTitle").html("UPDATE ARTICLE");
     $("#modalFooter").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>"+
     "<button type='button' class='btn btn-success' onclick='updateArticle("+idArticle+")'>Update</button>");
@@ -90,7 +90,7 @@ function msgUpdateMyList(idArticle){
     document.getElementById("idCantidad").value = cantidad2;
     document.getElementById("idNombre").value = nombre2;
     $("#modalContent").html("");
-    $('#myModal').modal();
+    $('#myModal').modal({backdrop: 'static'});
     $("#modalTitle").html("UPDATE ARTICLE");
     $("#modalFooter").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>"+
     "<button type='button' class='btn btn-success' onclick='updateMyList("+idArticle+")'>Update</button>");
@@ -105,7 +105,7 @@ function messageUpdateList(idLista){
     var nombre = $("#nombrelista".concat(idLista)).text();
     document.getElementById("idNameList").value = nombre;
     $("#modalContent").html("");
-    $('#insertListModal').modal();
+    $('#insertListModal').modal({backdrop: 'static'});
     $("#modalTitle").html("UPDATE LIST");
     $("#modalFooter").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>Close</button>"+
     "<button type='button' class='btn btn-success' onclick='updateList("+idLista+")'>Update</button>");
@@ -118,7 +118,7 @@ function messageUpdateList(idLista){
  */
 function messageDel(idArticle){
     var nombre2 = $("#tablenombre".concat(idArticle)).text();
-    $('#modalDel').modal();
+    $('#modalDel').modal({backdrop: 'static'});
     $("#modalContentDel").html("Are you sure to delete <span class='bg-danger'>"+nombre2+"</span>?");
     $("#modalTitleDel").html("DELETE A ARTICLE");
     $("#modalFooterDel").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>No</button>"+
@@ -132,7 +132,7 @@ function messageDel(idArticle){
  */
 function msgDelMyList(idArticle){
     var nombre2 = $("#tablenombre".concat(idArticle)).text();
-    $('#modalDel').modal();
+    $('#modalDel').modal({backdrop: 'static'});
     $("#modalContentDel").html("Are you sure to delete <span class='bg-danger'>"+nombre2+"</span>?");
     $("#modalTitleDel").html("DELETE A ARTICLE");
     $("#modalFooterDel").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>No</button>"+
@@ -146,7 +146,7 @@ function msgDelMyList(idArticle){
  */
 function messageDelList(idList){
     var nombre = $("#nombrelista".concat(idList)).text();
-    $('#delListModal').modal();
+    $('#delListModal').modal({backdrop: 'static'});
     $("#modalContentDel").html("Are you sure to delete <span class='bg-danger'>"+nombre+"</span>?");
     $("#modalTitleDel").html("DELETE A ARTICLE");
     $("#modalFooterDel").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>No</button>"+
@@ -157,7 +157,7 @@ function messageDelList(idList){
  * @returns {undefined}
  */
 function messageLogOut(){
-    $('#modalLogOut').modal();
+    $('#modalLogOut').modal({backdrop: 'static'});
     $("#titleLogOut").html("LOG OUT");
     $("#contenLogOut").html("Are you sure to <span class='bg-danger'>Log Out</span>?");
     $("#footerLogOut").html("<button type='button' class='btn btn-danger' data-dismiss='modal'>No</button>"+
@@ -178,9 +178,9 @@ function selectArticulo(idArticulo){
       url:   'selectidarticle.jsp',
       type:  'post',
       beforeSend: function () {
-       // $("#modalContent").html("Insert data&hellip;");
-       // $("#modalFooter").html("");
-       //  $('#myModal').modal({backdrop: 'static'});
+        $("#modalContent").html("Insert data&hellip;");
+        $("#modalFooter").html("");
+        $('#myModal').modal({backdrop: 'static'});
       },
       success:  function (msg) {
         var var2=msg.split("\n").join("");;
@@ -192,7 +192,10 @@ function selectArticulo(idArticulo){
             $('#contenido').fadeIn();
         }else if(var2 == 'error'){
             $("#modalContent").html("");
-            $("#modalContent").html("No se ha podido seleccionar");
+            $('#myModal').modal('hide');
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger alert-dismissable'>"+
+            "<h3><span class='label label-danger'>¡¡ERROR!!</span></h3><h3>No Change Status</h3></div>");
         }
       }
   });    
@@ -228,7 +231,7 @@ function addArticle(){
         var var2=msg.split("\n").join("");;
         if(var2 == 'ok'){
             $("#modalContent").html("");
-            $("#modalContent").html("Insertado Correctamente");
+            $("#modalContent").html("Insert Succesfull");
             document.getElementById("idCantidad").value = "";
             document.getElementById("idNombre").value = "";
             document.getElementById("idUsuAsociado").value = "";
@@ -240,10 +243,11 @@ function addArticle(){
             $('#contenido').fadeIn();
         }else if(var2 == 'error'){
             $("#modalContent").html("");
-            $("#modalContent").html("Insertado Mal");
+            $('#myModal').modal('hide');
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger'>"+
+            "<h3><span class='label label-danger'>ERROR!!</span></h3><h4>Can't Insert in Database</h4></div>");
         }
-          //$('#myModal').modal('hide');
-          //$('body,html').animate({scrollTop : 0}, 500);
       }
   });
 }
@@ -280,22 +284,24 @@ function updateArticle(idArticle){
         var var2=msg.split("\n").join("");;
         if(var2 === 'ok'){
             $("#modalContent").html("");
-            $("#modalContent").html("Insertado Correctamente");
+            $("#modalContent").html("Insert Succesfull");
             document.getElementById("idCantidad").value = "";
             document.getElementById("idNombre").value = "";
             document.getElementById("idUsuAsociado").value = "";
             $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
             $('#contenido').fadeOut();
             $('#contenido').load("contList.jsp");
             sleep(300);
             $('#contenido').fadeIn();
         }else if(var2 === 'error'){
             $("#modalContent").html("");
-            $("#modalContent").html("Update Wrong");
-            $("#modalContent").html("");
+            $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger'>"+
+            "<h3><span class='label label-danger'>ERROR!!</span></h3><h4>Can't Update Article in Database</h4></div>");
         }
-          //$('#myModal').modal('hide');
-          //$('body,html').animate({scrollTop : 0}, 500);
       }
   });
 }
@@ -326,17 +332,19 @@ function deleteArticle(idArticle){
             document.getElementById("idNombre").value = "";
             document.getElementById("idUsuAsociado").value = "";
             $('#modalDel').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
             $('#contenido').fadeOut();
             $('#contenido').load("contList.jsp");
             sleep(300);
             $('#contenido').fadeIn();
         }else if(var2 === 'error'){
             $("#modalContent").html("");
-            $("#modalContent").html("Update Wrong");
-            $("#modalContent").html("");
+            $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger'>"+
+            "<h3><span class='label label-danger'>ERROR!!</span></h3><h4>Can't Delete Article</h4></div>");
         }
-          //$('#myModal').modal('hide');
-          //$('body,html').animate({scrollTop : 0}, 500);
       }
   });
 }
@@ -372,7 +380,11 @@ function selectMylist(idArticulo){
             $('#contenido').fadeIn();
         }else if(var2 == 'error'){
             $("#modalContent").html("");
-            $("#modalContent").html("Error al marcarlo");
+            $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger'>"+
+            "<h3><span class='label label-danger'>ERROR!!</span></h3><h4>Can't change Status.</h4></div>");
         }
       }
   });    
@@ -407,7 +419,7 @@ function addArticleMyList(){
         var var2=msg.split("\n").join("");;
         if(var2 == 'ok'){
             $("#modalContent").html("");
-            $("#modalContent").html("Insertado Correctamente");
+            $("#modalContent").html("Insert Succesfull");
             document.getElementById("idCantidad").value = "";
             document.getElementById("idNombre").value = "";
             $('#myModal').modal('hide');
@@ -418,10 +430,12 @@ function addArticleMyList(){
             $('#contenido').fadeIn();
         }else if(var2 == 'error'){
             $("#modalContent").html("");
-            $("#modalContent").html("Insertado Mal");
+            $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger'>"+
+            "<h3><span class='label label-danger'>ERROR!!</span></h3><h4>Can't Insert in Database</h4></div>");
         }
-          //$('#myModal').modal('hide');
-          //$('body,html').animate({scrollTop : 0}, 500);
       }
   });
 }
@@ -462,17 +476,19 @@ function updateMyList(idArticle){
             document.getElementById("idCantidad").value = "";
             document.getElementById("idNombre").value = "";
             $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
             $('#contenido').fadeOut();
             $('#contenido').load("contmyList.jsp");
             sleep(300);
             $('#contenido').fadeIn();
         }else if(var2 === 'error'){
             $("#modalContent").html("");
-            $("#modalContent").html("Update Wrong");
-            $("#modalContent").html("");
+            $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger'>"+
+            "<h3><span class='label label-danger'>ERROR!!</span></h3><h4>Can't update Database</h4></div>");
         }
-          //$('#myModal').modal('hide');
-          //$('body,html').animate({scrollTop : 0}, 500);
       }
   });
 }
@@ -500,17 +516,19 @@ function deleteMyList(idArticle){
         if(var2 === 'ok'){
             $("#modalContentDel").html("Delete Succesfull");
             $('#modalDel').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
             $('#contenido').fadeOut();
             $('#contenido').load("contmyList.jsp");
             sleep(300);
             $('#contenido').fadeIn();
         }else if(var2 === 'error'){
             $("#modalContent").html("");
-            $("#modalContent").html("Update Wrong");
-            $("#modalContent").html("");
+            $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger'>"+
+            "<h3><span class='label label-danger'>ERROR!!</span></h3><h4>Can't delete in Database</h4></div>");
         }
-          //$('#myModal').modal('hide');
-          //$('body,html').animate({scrollTop : 0}, 500);
       }
   });
 }
@@ -538,7 +556,16 @@ function selectLista(idLista){
       },
       success:  function (msg) {
         var var2=msg.split("\n").join("");
-        window.location.reload(false);
+        if(var2 == 'ok'){
+            window.location.reload(false);
+        }else if(var2 === 'error'){
+            $("#modalContent").html("");
+            $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger'>"+
+            "<h3><span class='label label-danger'>ERROR!!</span></h3><h4>Can't Insert in Database</h4></div>");
+        }
       }
   });    
 }
@@ -565,16 +592,18 @@ function addList(){
         var var2=msg.split("\n").join("");;
         if(var2 == 'ok'){
             $("#modalContent").html("");
-            $("#modalContent").html("Insertado Correctamente");
+            $("#modalContent").html("Insert Succesfull");
             document.getElementById("idNameList").value = "";
             $('#insertListModal').modal('hide');
             window.location.reload(false);
         }else if(var2 == 'error'){
             $("#modalContent").html("");
-            $("#modalContent").html("Insertado Mal");
+            $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger'>"+
+            "<h3><span class='label label-danger'>ERROR!!</span></h3><h4>Can't Insert in Database</h4></div>");
         }
-          //$('#myModal').modal('hide');
-          //$('body,html').animate({scrollTop : 0}, 500);
       }
   });
 }
@@ -609,10 +638,12 @@ function updateList(idLista){
             window.location.reload(false);
         }else if(var2 === 'error'){
             $("#modalContent").html("");
-            $("#modalContent").html("Update Wrong");
+            $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger'>"+
+            "<h3><span class='label label-danger'>ERROR!!</span></h3><h4>Can't update in Database</h4></div>");
         }
-          //$('#myModal').modal('hide');
-          //$('body,html').animate({scrollTop : 0}, 500);
       }
   });
 }
@@ -644,11 +675,12 @@ function deleteList(idList){
             window.location.reload(false);
         }else if(var2 === 'error'){
             $("#modalContent").html("");
-            $("#modalContent").html("Delete Wrong");
-            $("#modalContent").html("");
+            $('#myModal').modal('hide');
+            $('body,html').animate({scrollTop : 0}, 500);
+            $('#modalError').modal();
+            $("#contentError").html("<div class='alert alert-danger'>"+
+            "<h3><span class='label label-danger'>ERROR!!</span></h3><h4>Can't delete in Database</h4></div>");
         }
-          //$('#myModal').modal('hide');
-          //$('body,html').animate({scrollTop : 0}, 500);
       }
   });
 }

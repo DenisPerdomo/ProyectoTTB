@@ -132,6 +132,20 @@
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
+            <div class="modal fade" tabindex="-1" role="dialog" id="modalError">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 id = "titleError" class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p id ="contentError"></p>
+                        </div>
+                        <div class="modal-footer" id = "footerError"></div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
     </body>
 </html>
 <% 

@@ -10,5 +10,9 @@
 int idLista = Integer.parseInt(request.getParameter("idLista")); 
 session.setAttribute("id_lista", idLista);
 int id = (int) (session.getAttribute("id_lista"));
-out.print(id);
+if(idLista == id){
+    out.print("ok");
+}else{
+    out.print("error");
+}
 %>
