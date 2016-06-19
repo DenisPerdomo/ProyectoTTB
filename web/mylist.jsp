@@ -18,7 +18,8 @@
    }
    //si el usuario es correcto cargamos la página.
    else{
-       int idLista = (int) (session.getAttribute("id_lista"));
+       String idListaS = (String) (session.getAttribute("id_lista"));
+       int idLista = Integer.parseInt(idListaS);
 %>
 <!DOCTYPE html>
 <html>

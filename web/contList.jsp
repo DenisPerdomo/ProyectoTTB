@@ -24,7 +24,8 @@
                     </thead>
                     <tbody>
                         <%
-                            int idLista = (int) (session.getAttribute("id_lista"));
+                            String idListaS = (String) (session.getAttribute("id_lista"));
+                            int idLista = Integer.parseInt(idListaS);
                             DbArticulo selectArticulos = new DbArticulo();
                             ArrayList<Articulo> array = new ArrayList<Articulo>();
                             array = selectArticulos.get(idLista);

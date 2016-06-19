@@ -98,7 +98,7 @@ public class Login extends HttpServlet {
                 //Obtenemos los obejtos a guardar en session
                 session.setAttribute("nick", nickSql);
                 session.setAttribute("pass", passwordSql);
-                session.setAttribute("id_lista", 0);
+                session.setAttribute("id_lista", "0");
                 //pagina a donde se enviara si se encuentra el usuario autenticado
                 response.sendRedirect("lists.jsp");
 
