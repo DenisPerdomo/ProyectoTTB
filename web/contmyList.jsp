@@ -48,11 +48,11 @@
                                     out.print("</span></td><td>");
                                     out.print("<a style='font-size: 18pt; color:#FFC20E;' href='javascript:void(0)' onclick='msgUpdateMyList("+fila.getIdArticulo()+")'><span class='glyphicon glyphicon-edit'></span></a>");
                                     out.print("</td><td>");
-                                    out.print("<a style='font-size: 18pt; color:#D9534F;' href='javascript:void(0)' onclick='messageDel("+fila.getIdArticulo()+")'><span class='glyphicon glyphicon-remove'></span></a>");
+                                    out.print("<a style='font-size: 18pt; color:#D9534F;' href='javascript:void(0)' onclick='msgDelMyList("+fila.getIdArticulo()+")'><span class='glyphicon glyphicon-remove'></span></a>");
                                     out.print("</td></tr>");
                                     i++;
                                 }else{
-                                    out.print("<tr class='success' id='"+fila.getIdArticulo()+"'><td><a style='font-size: 18pt;' href='javascript:void(0)' onclick = 'selectArticulo("+fila.getIdArticulo()+")'><span class='glyphicon glyphicon-check'></span></a></td>");
+                                    out.print("<tr class='success' id='"+fila.getIdArticulo()+"'><td><a style='font-size: 18pt;' href='javascript:void(0)' onclick = 'selectMylist("+fila.getIdArticulo()+")'><span class='glyphicon glyphicon-check'></span></a></td>");
                                     out.print("<td><s><span id='tablecantidad"+fila.getIdArticulo()+"'>");
                                     out.print(fila.getCantidad());
                                     out.print("</span></s></td><td><s><span id='tablenombre"+fila.getIdArticulo()+"'>");
@@ -64,7 +64,7 @@
                                     out.print("</span></s></td><td>");
                                     out.print("<a style='font-size: 18pt; color:#FFC20E;' href='javascript:void(0)' onclick='msgUpdateMyList("+fila.getIdArticulo()+")'><span class='glyphicon glyphicon-edit'></span></a>");
                                     out.print("</td><td>");
-                                    out.print("<a style='font-size: 18pt; color:#D9534F;' href='javascript:void(0)' onclick='messageDel("+fila.getIdArticulo()+")'><span class='glyphicon glyphicon-remove'></span></a>");
+                                    out.print("<a style='font-size: 18pt; color:#D9534F;' href='javascript:void(0)' onclick='msgDelMyList("+fila.getIdArticulo()+")'><span class='glyphicon glyphicon-remove'></span></a>");
                                     out.print("</td></tr>");
                                     i++;
                                 }

@@ -63,10 +63,10 @@
                     <li><a href="mylist.jsp">My List</a></li>
                 </ul>
                 <p class="navbar-text pull-right">
-                    <a href="#" class="navbar-link">Log Out</a>
+                    <a href="#" class="navbar-link">Help</a>
                 </p>
                 <p class="navbar-text pull-right">
-                    <a href="#" class="navbar-link">Ayuda</a>
+                    <a href="javascript:void(0)" onclick="messageLogOut()" class="navbar-link">Log Out</a>
                 </p>
             </div><!--/.nav-collapse -->
           </div>
@@ -137,6 +137,20 @@
                             <p id ="modalContentDel"></p>
                         </div>
                         <div class="modal-footer" id = "modalFooterDel"></div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <div class="modal fade" tabindex="-1" role="dialog" id="modalLogOut">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 id = "titleLogOut" class="modal-title"></h4>
+                        </div>
+                        <div class="modal-body">
+                            <p id ="contenLogOut"></p>
+                        </div>
+                        <div class="modal-footer" id = "footerLogOut"></div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->

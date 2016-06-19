@@ -71,12 +71,13 @@ public class Login extends HttpServlet {
                 out.println("<div class=\"col-md-4\">");
                 out.println("<img src=\"imgs/ttblogo.png\" class=\"responsive center-block\" width=\"65%\"/>");
                 out.println("<br>");
-                out.println("<form class=\"form-signin\">");
+                out.println("<form class=\"form-signin\" action =\"Login\" method=\"POST\">");
                 out.println("<h2 class=\"form-signin-heading\">Please sign in</h2>");
-                out.println("<label for=\"inputEmail\" class=\"sr-only\">Email address</label>");
-                out.println("<input type=\"email\" id=\"inputEmail\" class=\"form-control\" placeholder=\"Email address\" required autofocus>");
+                out.println("<label for=\"inputNick\" class=\"sr-only\">User Nick</label>");
+                out.println("<input type=\"text\" id=\"inputNick\" name = \"usuario\" class=\"form-control\" placeholder=\"User Nick\" required autofocus>");
+                out.println("<br>");
                 out.println("<label for=\"inputPassword\" class=\"sr-only\">Password</label>");
-                out.println("<input type=\"password\" id=\"inputPassword\" class=\"form-control\" placeholder=\"Password\" required>");
+                out.println("<input type=\"password\" id=\"inputPassword\" name=\"password\" class=\"form-control\" placeholder=\"Password\" required>");
                 out.println("<br>");
                 out.println("<button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Sign in</button>");
                 out.println("</form>");
