@@ -25,7 +25,7 @@ public class ConClass {
             Class.forName("com.mysql.jdbc.Driver");
             String server = "jdbc:mysql://localhost/ttb_db";
             String userDB = "root";
-            String passDB = "";
+            String passDB = "Majada2016";
             conexion = DriverManager.getConnection(server,userDB,passDB);
         }catch(ClassNotFoundException ex){
             System.out.print(ex + " Error 1 con la conexion BBDD "+ex.getMessage());
