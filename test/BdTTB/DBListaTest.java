@@ -94,7 +94,7 @@ public class DBListaTest {
     @Test
     public void testDeleteList() {
         System.out.println("deleteList");
-        int idList = 8;
+        int idList = 9;
         DBLista instance = new DBLista();
         String expResult = "ok";
         String result = instance.deleteList(idList);
