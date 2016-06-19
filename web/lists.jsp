@@ -125,7 +125,7 @@
                                <div class="form-group" id ="nameListGroup">
                                   <label class="control-label" for="idNameList">List Name</label>
                                   <input type="text" class="form-control" id ="idNameList" placeholder="List Name" required>
-                                  <span id ="nameListHelp" class="help-block">Name name you want for the list.</span>
+                                  <span id ="nameListHelp" class="help-block">Name you want for the list.</span>
                                   <span id="iconNameList" class=""></span>
                                 </div>
                                 <input type="hidden" id="username" value="charlie">

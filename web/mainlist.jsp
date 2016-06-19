@@ -91,7 +91,7 @@
                                 </div>
                                 <div class="form-group" id ="nombreGroup">
                                   <label class="control-label" for="idNombre">Name</label>
-                                  <input type="text" class="form-control" id ="idNombre" placeholder="" required>
+                                  <input type="text" class="form-control" id ="idNombre" placeholder="Article Name" required>
                                   <span id ="nameHelp" class="help-block">The product to bring.</span>
                                   <span id="iconName" class=""></span>
                                 </div>
@@ -99,7 +99,7 @@
                                   <label class="control-label" for="idUsuAsociado">Who bring?</label>
                                   <!--<input type="text" class="form-control" id ="idUsuAsociado" placeholder="" required>-->
                                     <select class="form-control" id="idUsuAsociado"> 
-                                    <option value='' selected='selected' disabled='disabled'>Nick</option>
+                                    <option value='' selected='selected' disabled='disabled'>Choose a nick...</option>
                                     <%DBUsuario listarUsuarios = new DBUsuario();
                                     ArrayList<Usuario> array = new ArrayList<Usuario>();
                                     array = listarUsuarios.get();

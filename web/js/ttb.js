@@ -47,6 +47,10 @@ function messageAddmyList(){
     "<button type='button' class='btn btn-success' onclick='addArticleMyList()'>SEND</button>");
 };
 
+/**
+ * Funcion para mostrar el modal con formulario para insertar una lista.
+ * @returns {undefined}
+ */
 function messageAddList(){
     document.getElementById("idNameList").value = "";
     $("#modalContent").html("");
@@ -56,6 +60,11 @@ function messageAddList(){
     "<button type='button' class='btn btn-success' onclick='addList()'>SEND</button>");
 };
 
+/**
+ * Funcion rellenar los campos del formulario y para mostrar el modal con el formulario para actualizar mainlist.
+ * @param {type} idArticle El id del articulo que se va a modificar.
+ * @returns {undefined}
+ */
 function messageUpdate(idArticle){
     var cantidad2 = $("#tablecantidad".concat(idArticle)).text();
     var nombre2 = $("#tablenombre".concat(idArticle)).text();
@@ -70,6 +79,11 @@ function messageUpdate(idArticle){
     "<button type='button' class='btn btn-success' onclick='updateArticle("+idArticle+")'>Update</button>");
 };
 
+/**
+ * Funcion rellenar los campos del formulario y para mostrar el modal con el formulario para actualizar mylist.
+ * @param {type} idArticle El id del articulo de mylist que se va a modificar.
+ * @returns {undefined}
+ */
 function msgUpdateMyList(idArticle){
     var cantidad2 = $("#tablecantidad".concat(idArticle)).text();
     var nombre2 = $("#tablenombre".concat(idArticle)).text();
@@ -82,6 +96,11 @@ function msgUpdateMyList(idArticle){
     "<button type='button' class='btn btn-success' onclick='updateMyList("+idArticle+")'>Update</button>");
 };
 
+/**
+ * Funcion rellenar los campos del formulario y para mostrar el modal con el formulario para actualizar Lists.
+ * @param {type} idLista El id de la lista que se va a modificar.
+ * @returns {undefined}
+ */
 function messageUpdateList(idLista){
     var nombre = $("#nombrelista".concat(idLista)).text();
     document.getElementById("idNameList").value = nombre;
@@ -92,6 +111,11 @@ function messageUpdateList(idLista){
     "<button type='button' class='btn btn-success' onclick='updateList("+idLista+")'>Update</button>");
 };
 
+/**
+ * Funcion para mostrar el mensaje modal para eliminar un articulo.
+ * @param {type} idArticle El id del articulo de mainlist que vamos a eliminar.
+ * @returns {undefined}
+ */
 function messageDel(idArticle){
     var nombre2 = $("#tablenombre".concat(idArticle)).text();
     $('#modalDel').modal();
@@ -101,6 +125,11 @@ function messageDel(idArticle){
     "<button type='button' class='btn btn-success' onclick='deleteArticle("+idArticle+")'>Yes</button>");
 };
 
+/**
+ * Funcion para mostrar el mensaje modal para eliminar un articulo de mylist.
+ * @param {type} idArticle El id del articulo de mylist que vamos a eliminar.
+ * @returns {undefined}
+ */
 function msgDelMyList(idArticle){
     var nombre2 = $("#tablenombre".concat(idArticle)).text();
     $('#modalDel').modal();
@@ -110,6 +139,11 @@ function msgDelMyList(idArticle){
     "<button type='button' class='btn btn-success' onclick='deleteMyList("+idArticle+")'>Yes</button>");
 };
 
+/**
+ * Funcion para mostrar el mensaje modal para eliminar una lista.
+ * @param {type} idList El id de la lista que vamos a eliminar.
+ * @returns {undefined}
+ */
 function messageDelList(idList){
     var nombre = $("#nombrelista".concat(idList)).text();
     $('#delListModal').modal();
@@ -130,6 +164,11 @@ function messageLogOut(){
     "<a class='btn btn-success' href='logout.jsp'>Yes</button>");
 };
 //**************TODO RELACIONADO CON MAINLIST**************************
+/**
+ * Funcion para marcar el articulo como (si o no) comprado, en el mainlist.
+ * @param {type} idArticulo Id del articulo que vamos a cambiar su estado.
+ * @returns {undefined}
+ */
 function selectArticulo(idArticulo){
     var parametros = {
       "idArticulo" : idArticulo 
@@ -160,7 +199,7 @@ function selectArticulo(idArticulo){
 }
 
 /**
- * 
+ * Función para añadir un articulo en la mainlist.
  * @returns {undefined}
  */
 function addArticle(){
@@ -210,7 +249,8 @@ function addArticle(){
 }
 
 /**
- * Funcion para insertar los datos con la función de ajax de jquery.
+ * Funcion para modificar un artículo de la mainlist.
+ * @param {type} idArticle Id del articulo que vamos a actualizar.
  * @returns {undefined}
  */
 function updateArticle(idArticle){
@@ -260,6 +300,11 @@ function updateArticle(idArticle){
   });
 }
 
+/**
+ * Funcion para eliminar un articulo de la mainlist.
+ * @param {type} idArticle Id del articulo que se vamos a eliminar.
+ * @returns {undefined}
+ */
 function deleteArticle(idArticle){
     var parametros = {
       "idArticle" : idArticle 
@@ -299,6 +344,11 @@ function deleteArticle(idArticle){
 
 //**************TODO RELACIONADO CON MYLIST************************************
 
+/**
+ * Funcion para marcar el articulo como (si o no) comprado, en mylist.
+ * @param {type} idArticulo Id del articulo que vamos a cambiar el estado.
+ * @returns {undefined}
+ */
 function selectMylist(idArticulo){
     var parametros = {
       "idArticulo" : idArticulo 
@@ -328,6 +378,10 @@ function selectMylist(idArticulo){
   });    
 }
 
+/**
+ * Funcion para añadir un articulo a mylist.
+ * @returns {undefined}
+ */
 function addArticleMyList(){
     var cantidad = document.getElementById("idCantidad").value;
     var nombre = document.getElementById("idNombre").value;
@@ -372,6 +426,11 @@ function addArticleMyList(){
   });
 }
 
+/**
+ * Funcion para actualizar un articulo de mylist.
+ * @param {type} idArticle Id del articulo de mylist que vamos a actulizar.
+ * @returns {undefined}
+ */
 function updateMyList(idArticle){
     var cantidad = document.getElementById("idCantidad").value;
     var nombre = document.getElementById("idNombre").value;
@@ -417,6 +476,12 @@ function updateMyList(idArticle){
       }
   });
 }
+
+/**
+ * Funcion para borrar un articulo de mylist.
+ * @param {type} idArticle Id del articulo de mylist que vamos a borrar.
+ * @returns {undefined}
+ */
 function deleteMyList(idArticle){
     var parametros = {
       "idArticle" : idArticle 
@@ -452,6 +517,12 @@ function deleteMyList(idArticle){
 //**************TERMINA TODO RELACIONADO CON MYLIST*****************
 
 //**************TODO RELACIONADO CON LISTS**************************
+
+/**
+ * Funcion para seleccionar la lista con la que vamos a trabajar.
+ * @param {type} idLista Id de la lista que vamos a seleccionar.
+ * @returns {undefined}
+ */
 function selectLista(idLista){
     var parametros = {
       "idLista" : idLista 
@@ -472,6 +543,10 @@ function selectLista(idLista){
   });    
 }
 
+/**
+ * Funcion para añadir una lista nueva.
+ * @returns {undefined}
+ */
 function addList(){
     var nameList = document.getElementById("idNameList").value;
     var parametros = {
@@ -504,6 +579,11 @@ function addList(){
   });
 }
 
+/**
+ * Funcion para modificar una lista existente.
+ * @param {type} idLista Id de la lista que vamos a actualizar.
+ * @returns {undefined}
+ */
 function updateList(idLista){
     var nameList = document.getElementById("idNameList").value;
     var parametros = {
@@ -537,6 +617,11 @@ function updateList(idLista){
   });
 }
 
+/**
+ * Funcion para borrar una lista.
+ * @param {type} idList Id de la lista que vamos a borrar.
+ * @returns {undefined}
+ */
 function deleteList(idList){
     var parametros = {
       "idList" : idList 
